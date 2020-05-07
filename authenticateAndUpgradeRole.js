@@ -99,7 +99,10 @@ export default function authenticateAndUpgradeRole({
                 // Now authenticate with Jicofo and get a new session ID.
                 const room = xmpp.createRoom(
                     this.options.name,
-                    this.options.config,
+                    {
+                        ...this.options.config,
+                        enableLobby: true
+                    },
                     onCreateResource
                 );
 

@@ -302,7 +302,8 @@ JitsiConference.prototype._init = function(options = {}) {
     this.room = this.xmpp.createRoom(
         this.options.name, {
             ...config,
-            statsId: this._statsCurrentId
+            statsId: this._statsCurrentId,
+            enableLobby: true
         },
         JitsiConference.resourceCreator
     );

@@ -143,8 +143,9 @@ describe('ChatRoom', () => {
                 {} /* connection */,
                 'jid',
                 'password',
-                xmpp,
-                {} /* options */);
+                xmpp, {
+                    enableLobby: true
+                } /* options */);
             emitterSpy = spyOn(room.eventEmitter, 'emit');
         });
         it('parses status correctly', () => {
