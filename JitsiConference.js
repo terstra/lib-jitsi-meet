@@ -3335,7 +3335,7 @@ JitsiConference.prototype.setE2EEKey = function(key) {
  * @returns {boolean} whether lobby is supported in the backend.
  */
 JitsiConference.prototype.isLobbySupported = function() {
-    return Boolean(this.room && this.room.getLobby().isLobbySupported());
+    return Boolean(this.room && this.room.getLobby().isSupported());
 };
 
 /**
@@ -3346,7 +3346,7 @@ JitsiConference.prototype.isLobbySupported = function() {
  */
 JitsiConference.prototype.enableLobby = function(password) {
     if (this.room && this.isModerator()) {
-        return this.room.getLobby().enableLobby(password);
+        return this.room.getLobby().enable(password);
     }
 
     return Promise.reject(
@@ -3360,7 +3360,7 @@ JitsiConference.prototype.enableLobby = function(password) {
  */
 JitsiConference.prototype.disableLobby = function() {
     if (this.room && this.isModerator()) {
-        this.room.getLobby().disableLobby();
+        this.room.getLobby().disable();
     }
 };
 
@@ -3374,7 +3374,7 @@ JitsiConference.prototype.disableLobby = function() {
  */
 JitsiConference.prototype.joinLobby = function(displayName, email, password) {
     if (this.room) {
-        return this.room.getLobby().joinLobbyRoom(displayName, email, password);
+        return this.room.getLobby().join(displayName, email, password);
     }
 
     return Promise.reject(new Error('The conference not started'));
